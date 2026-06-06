@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appointments — Dharati's HMS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <div class="nav-logo">🏥</div>
+      <div>
+        <div class="nav-title">Dharti's HMS</div>
+        <div class="nav-subtitle">Physiotherapy Clinic</div>
+      </div>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="patients.html">Patients</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointments.html" class="active">Appointments</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger">☰</button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <h1>📅 Appointment Management</h1>
+      <p>View and manage all clinic appointments</p>
+    </div>
+    <button class="btn btn-primary" onclick="openAddAppointment()">➕ New Appointment</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<section class="section">
+  <div class="container">
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number" id="appt-count">—</div>
+        <div class="stat-label">Total Appointments</div>
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--font-display);color:var(--primary);font-size:1.2rem;margin-bottom:1rem;">All Appointments</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="appointments-tbody">
+          <tr class="loading-row"><td colspan="7"><span class="spinner spinner-dark"></span> Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADD / EDIT APPOINTMENT MODAL -->
+<div class="modal-overlay" id="appt-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="appt-modal-title">New Appointment</h3>
+      <button class="modal-close" onclick="closeModal('appt-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="appt-form" onsubmit="event.preventDefault(); saveAppointment();">
+        <input type="hidden" id="appt-id-hidden" />
+        <div class="form-grid">
+
+          <div class="form-group form-full">
+            <label class="form-label">Select Registered Patient</label>
+            <select id="a-patient" class="form-control">
+              <option value="">— Select Patient (optional) —</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Or Enter Patient Name</label>
+            <input id="a-pname" class="form-control" type="text" placeholder="Walk-in / public booking name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Patient Phone</label>
+            <input id="a-pphone" class="form-control" type="tel" placeholder="Phone number" />
+          </div>
+
+          <div class="form-group form-full">
+            <label class="form-label">Assign Doctor</label>
+            <select id="a-doctor" class="form-control">
+              <option value="">— Select Doctor (optional) —</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Appointment Date *</label>
+            <input id="a-date" class="form-control" type="date" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Appointment Time *</label>
+            <input id="a-time" class="form-control" type="time" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select id="a-status" class="form-control">
+              <option value="Pending">Pending</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="form-group form-full">
+            <label class="form-label">Notes</label>
+            <textarea id="a-notes" class="form-control" placeholder="Any notes or special instructions…"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" style="background:var(--border);color:var(--text);" onclick="closeModal('appt-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveAppointment()">💾 Save Appointment</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>loadAppointments();</script>
+</body>
+</html>
