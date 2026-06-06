@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dharati's Hospital Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ─── NAVBAR ──────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <div class="nav-logo">🏥</div>
+      <div>
+        <div class="nav-title">Dharti's HMS</div>
+        <div class="nav-subtitle">Physiotherapy Clinic</div>
+      </div>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="patients.html">Patients</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger">☰</button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">✨ Trusted Physiotherapy Care</div>
+    <h1>Dharti's Hospital<br>Management System</h1>
+    <p class="hero-tagline">Physiotherapist | Pre &amp; Post Natal Specialist</p>
+    <p class="hero-certs">Certified in Cupping &amp; Dry Needling</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn btn-primary btn-lg">📅 Book Appointment</a>
+      <a href="tel:+916353300605" class="btn btn-outline btn-lg">📞 Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT DOCTOR ─────────────────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Meet Your Specialist</h2>
+      <div class="divider"></div>
+      <p>Experienced physiotherapist dedicated to your recovery and wellbeing</p>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-avatar">👩‍⚕️</div>
+      <div>
+        <h2 class="doctor-name">Dr. Dharti</h2>
+        <p class="doctor-spec">Physiotherapist | Pre &amp; Post Natal Specialist</p>
+        <p class="doctor-certs">Certified in Cupping Therapy &amp; Dry Needling</p>
+        <div class="doctor-badges">
+          <span class="badge">🎓 Qualified Physiotherapist</span>
+          <span class="badge">🤱 Pre &amp; Post Natal Care</span>
+          <span class="badge">💧 Cupping Therapy</span>
+          <span class="badge">🩺 Dry Needling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Our Services</h2>
+      <div class="divider"></div>
+      <p>Comprehensive physiotherapy and rehabilitation services tailored to your needs</p>
+    </div>
+    <div class="card-grid card-grid-3">
+      <div class="card">
+        <div class="service-icon">🦴</div>
+        <div class="service-title">Musculoskeletal Physiotherapy</div>
+        <p class="service-desc">Treatment for joint pain, back pain, muscle injuries, and postural problems.</p>
+      </div>
+      <div class="card">
+        <div class="service-icon">🤱</div>
+        <div class="service-title">Pre &amp; Post Natal Care</div>
+        <p class="service-desc">Specialised physiotherapy support for mothers during and after pregnancy.</p>
+      </div>
+      <div class="card">
+        <div class="service-icon">💧</div>
+        <div class="service-title">Cupping Therapy</div>
+        <p class="service-desc">Traditional cupping technique to relieve pain and improve circulation.</p>
+      </div>
+      <div class="card">
+        <div class="service-icon">🩺</div>
+        <div class="service-title">Dry Needling</div>
+        <p class="service-desc">Targeted dry needling for muscle knots, trigger points, and chronic pain.</p>
+      </div>
+      <div class="card">
+        <div class="service-icon">🏃</div>
+        <div class="service-title">Sports Rehabilitation</div>
+        <p class="service-desc">Recover faster from sports injuries with tailored rehab programmes.</p>
+      </div>
+      <div class="card">
+        <div class="service-icon">🧘</div>
+        <div class="service-title">Postural Correction</div>
+        <p class="service-desc">Assessment and correction of postural imbalances causing pain or discomfort.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOOKING ───────────────────────────────────────────────── -->
+<section class="section booking-section" id="booking">
+  <div class="container">
+    <div class="section-head">
+      <h2>Book an Appointment</h2>
+      <div class="divider"></div>
+      <p>Fill in your details below and we'll confirm your appointment shortly</p>
+    </div>
+    <div class="booking-box">
+
+      <!-- FORM -->
+      <div id="booking-form-wrap">
+        <h3>📅 Request Appointment</h3>
+        <form id="public-booking-form" onsubmit="submitPublicBooking(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input id="b-name" class="form-control" type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number *</label>
+              <input id="b-phone" class="form-control" type="tel" placeholder="+91 XXXXXXXXXX" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Date *</label>
+              <input id="b-date" class="form-control" type="date" required />
+            </div>
+            <div class="form-group form-full">
+              <label class="form-label">Notes / Your Concern</label>
+              <textarea id="b-notes" class="form-control" placeholder="Describe your condition briefly…"></textarea>
+            </div>
+          </div>
+          <button id="book-btn" type="submit" class="btn btn-primary btn-full btn-lg">
+            Book Appointment →
+          </button>
+        </form>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="booking-success" class="booking-success" style="display:none;">
+        <div class="success-icon">🎉</div>
+        <h3>Appointment Request Submitted Successfully!</h3>
+        <p>We've received your request. Please call to confirm your appointment time.</p>
+        <a href="tel:+916353300605" class="btn btn-call btn-lg">
+          📞 Call Now to Confirm Appointment
+        </a>
+        <p style="margin-top:1.5rem;font-size:.85rem;color:var(--text-muted);">
+          Or chat with us on WhatsApp:
+          <a href="https://wa.me/916353300605" style="color:var(--accent);font-weight:600;">
+            wa.me/916353300605
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────── -->
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <h2>Contact Us</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card-grid card-grid-3">
+      <div class="card contact-card">
+        <div class="contact-icon">📞</div>
+        <div class="contact-title">Call for Appointment</div>
+        <div class="contact-value">
+          <a href="tel:+916353300605">+91 6353300605</a>
+        </div>
+        <a href="tel:+916353300605" class="btn btn-primary btn-sm">📞 Call Now</a>
+      </div>
+      <div class="card contact-card">
+        <div class="contact-icon">💬</div>
+        <div class="contact-title">WhatsApp Us</div>
+        <div class="contact-value">
+          <a href="https://wa.me/916353300605">Chat on WhatsApp</a>
+        </div>
+        <a href="https://wa.me/916353300605" class="btn btn-whatsapp btn-sm">💬 Chat on WhatsApp</a>
+      </div>
+      <div class="card contact-card">
+        <div class="contact-icon">📸</div>
+        <div class="contact-title">Follow Us</div>
+        <div class="contact-value">Instagram</div>
+        <a href="#" class="btn btn-instagram btn-sm instagram-link">📸 Follow on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INSTAGRAM ─────────────────────────────────────────────── -->
+<section class="instagram-section">
+  <div class="container">
+    <h2>📸 Follow Us On Instagram</h2>
+    <p>Stay updated with tips, success stories, and clinic news</p>
+    <a href="#" class="btn btn-white btn-lg instagram-link">📸 Follow @DhartiPhysio</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>🏥 Dharti's HMS</h3>
+        <p>Physiotherapist | Pre &amp; Post Natal Specialist<br>Certified in Cupping &amp; Dry Needling</p>
+        <p style="margin-top:.75rem;">📞 <a href="tel:+916353300605" style="color:rgba(255,255,255,.8);">+91 6353300605</a></p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="patients.html">Patients</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="appointments.html">Appointments</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Physiotherapy</a></li>
+          <li><a href="#">Pre &amp; Post Natal</a></li>
+          <li><a href="#">Cupping Therapy</a></li>
+          <li><a href="#">Dry Needling</a></li>
+          <li><a href="#">Sports Rehab</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="tel:+916353300605">📞 +91 6353300605</a></li>
+          <li><a href="https://wa.me/916353300605">💬 WhatsApp</a></li>
+          <li><a href="#" class="instagram-link">📸 Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Dharti's Hospital Management System. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
