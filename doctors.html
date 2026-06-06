@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctors — Dharati's HMS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      <div class="nav-logo">🏥</div>
+      <div>
+        <div class="nav-title">Dharti's HMS</div>
+        <div class="nav-subtitle">Physiotherapy Clinic</div>
+      </div>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="patients.html">Patients</a>
+      <a href="doctors.html" class="active">Doctors</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger">☰</button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <h1>👨‍⚕️ Doctor Management</h1>
+      <p>Manage doctor profiles and specialisations</p>
+    </div>
+    <button class="btn btn-primary" onclick="openAddDoctor()">➕ Add Doctor</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<section class="section">
+  <div class="container">
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number" id="doctor-count">—</div>
+        <div class="stat-label">Total Doctors</div>
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--font-display);color:var(--primary);font-size:1.2rem;margin-bottom:1rem;">All Doctors</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>Doctor Name</th>
+            <th>Specialization</th>
+            <th>Qualification</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="doctors-tbody">
+          <tr class="loading-row"><td colspan="6"><span class="spinner spinner-dark"></span> Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADD / EDIT DOCTOR MODAL -->
+<div class="modal-overlay" id="doctor-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="doctor-modal-title">Add Doctor</h3>
+      <button class="modal-close" onclick="closeModal('doctor-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="doctor-form" onsubmit="event.preventDefault(); saveDoctor();">
+        <input type="hidden" id="doctor-id-hidden" />
+        <div class="form-grid">
+          <div class="form-group form-full">
+            <label class="form-label">Doctor Name *</label>
+            <input id="d-name" class="form-control" type="text" placeholder="Dr. Full Name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Specialization *</label>
+            <input id="d-spec" class="form-control" type="text" placeholder="e.g. Physiotherapist" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Qualification *</label>
+            <input id="d-qual" class="form-control" type="text" placeholder="e.g. BPT, MPT" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <input id="d-phone" class="form-control" type="tel" placeholder="+91 XXXXXXXXXX" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input id="d-email" class="form-control" type="email" placeholder="doctor@email.com" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" style="background:var(--border);color:var(--text);" onclick="closeModal('doctor-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveDoctor()">💾 Save Doctor</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>loadDoctors();</script>
+</body>
+</html>
