@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — Dr. Dharati's Physiotherapy Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #7a9e8a;
+    --sage-light: #c5ddd0;
+    --sage-pale: #eef5f1;
+    --warm: #c9a96e;
+    --ink: #2a2d2b;
+    --ink-soft: #7a8578;
+    --white: #fdfcfa;
+    --radius: 16px;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: #1e2520;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  .bg-pattern {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(122,158,138,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 90%, rgba(201,169,110,0.12) 0%, transparent 55%),
+      #1e2520;
+  }
+  .bg-lines {
+    position: fixed; inset: 0; z-index: 0;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(122,158,138,0.06) 80px);
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  /* HEADER */
+  .clinic-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeDown 0.8s ease both;
+  }
+  .clinic-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(122,158,138,0.15);
+    border: 0.5px solid rgba(122,158,138,0.4);
+    border-radius: 40px;
+    padding: 6px 18px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 1.2rem;
+  }
+  .clinic-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    animation: pulse 2s infinite;
+  }
+  .clinic-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+  }
+  .clinic-title em { font-style: italic; color: var(--sage-light); }
+  .clinic-sub {
+    margin-top: 0.6rem;
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  /* TABS */
+  .video-stage {
+    width: 100%;
+    max-width: 540px;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .video-tabs {
+    display: flex; gap: 8px; margin-bottom: 16px;
+    justify-content: center;
+  }
+  .vtab {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .vtab.active, .vtab:hover {
+    background: rgba(122,158,138,0.2);
+    border-color: rgba(122,158,138,0.5);
+    color: var(--sage-light);
+  }
+
+  /* VIDEO PANELS */
+  .video-panels { width: 100%; }
+
+  .video-panel {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+  .video-panel.active { display: flex; }
+
+  /* Instagram embed wrapper */
+  .ig-wrap {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border-radius: var(--radius);
+    border: 0.5px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    min-height: 580px;
+  }
+
+  .ig-wrap blockquote.instagram-media {
+    margin: 0 !important;
+    min-width: 280px !important;
+    max-width: 400px !important;
+    width: 100% !important;
+  }
+
+  .panel-label {
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+  }
+
+  /* NEXT BUTTON */
+  .next-section {
+    margin-top: 2.8rem;
+    text-align: center;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+  .next-hint {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .btn-next {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: linear-gradient(135deg, var(--sage) 0%, #5d8a72 100%);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 36px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(122,158,138,0.3);
+  }
+  .btn-next:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(122,158,138,0.45);
+  }
+  .btn-next:active { transform: translateY(0); }
+  .btn-next .arrow {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s;
+  }
+  .btn-next:hover .arrow { transform: translateX(4px); }
+
+  .skip-link {
+    display: block;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .skip-link:hover { color: rgba(255,255,255,0.5); }
+
+  .foot-note {
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @media (max-width: 500px) {
+    .video-tabs { flex-wrap: wrap; }
+    .btn-next { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+<div class="bg-lines"></div>
+
+<div class="page">
+
+  <header class="clinic-header">
+    <div class="clinic-badge">Physiotherapy Clinic</div>
+    <h1 class="clinic-title">Welcome to <em>Dr. Dharati's</em><br>Clinic</h1>
+    <p class="clinic-sub">Physiotherapist · Pre &amp; Post Natal Specialist · Wellness Consultant</p>
+  </header>
+
+  <div class="video-stage">
+
+    <div class="video-tabs">
+      <button class="vtab active" onclick="switchTab(0)">🏥 About Clinic</button>
+      <button class="vtab" onclick="switchTab(1)">👩‍⚕️ Dr. Dharati</button>
+      <button class="vtab" onclick="switchTab(2)">💆 Treatment</button>
+    </div>
+
+    <div class="video-panels">
+
+      <!-- Video 1 -->
+      <div class="video-panel active" id="panel0">
+        <div class="ig-wrap">
+          <blockquote class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DM8PHVtv9hr/"
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+        <p class="panel-label">About the Clinic</p>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-panel" id="panel1">
+        <div class="ig-wrap">
+          <blockquote class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DK6CeauIdhI/"
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+        <p class="panel-label">Doctor Introduction</p>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-panel" id="panel2">
+        <div class="ig-wrap">
+          <blockquote class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DXHqM6ZjRu9/"
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+        <p class="panel-label">Treatment Videos</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NEXT BUTTON -->
+  <div class="next-section">
+    <p class="next-hint">Ready to explore the clinic?</p>
+    <a href="index.html" class="btn-next">
+      Enter the Clinic
+      <span class="arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </span>
+    </a>
+    <a href="index.html" class="skip-link">Skip intro →</a>
+  </div>
+
+  <p class="foot-note">"Healing through movement, wellness through care"</p>
+
+</div>
+
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
+  function switchTab(idx) {
+    document.querySelectorAll('.vtab').forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+    });
+    document.querySelectorAll('.video-panel').forEach((p, i) => {
+      p.classList.toggle('active', i === idx);
+    });
+    // Re-process embeds when switching tabs
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  }
+</script>
+</body>
+</html>
