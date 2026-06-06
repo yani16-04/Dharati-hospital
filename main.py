@@ -11,7 +11,7 @@ from database import engine, get_db
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Dharti's Hospital Management System",
+    title="yourphysio dr dharati",
     description="API for Physiotherapy Clinic — Dharti's HMS",
     version="1.0.0",
 )
